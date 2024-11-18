@@ -109,15 +109,12 @@ export default {
         });
 
         const submit = () => {
-            form.post(
-                route('replies.store'),
-                {
-                    preserveScroll: true,
-                    osSucess: () => {
-                        form.reply = '';
-                    }
-                }
-            );
+            form.post(route('replies.store'), {
+                preserveScroll: true,
+                onSuccess: () => {
+                    form.reply = '';
+                },
+            });
         };
 
         return { form, submit };
