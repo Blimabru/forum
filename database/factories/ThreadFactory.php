@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Thread>
@@ -16,10 +17,12 @@ class ThreadFactory extends Factory
      */
     public function definition(): array
     {
+        $title = fake()->sentence;
+
         return [
-            'title' => fake()->sentence,
+            'title' => $title,
             'body' => fake()->paragraph(2),
-            'slug' => fake()->slug,
+            'slug' => Str::Slug($title),
             'user_id' => \App\Models\User::factory()
         ];
     }
